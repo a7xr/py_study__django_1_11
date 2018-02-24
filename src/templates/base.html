@@ -1,0 +1,31 @@
+<html>
+<head></head>
+<body>
+<h1>hello World</h1>
+<p>This is {{ html_var }} coming through</p> 
+<p>This is going to be a simple exercice, but all of the logic should go from views.py</p> 
+{% if random_num|divisibleby:"2" %}
+	<p> random_number({{ random_num }}) is divisible by 2 </p>
+{% else %}
+	<p> not divisible by 2 is the random_number: {{ random_num }}
+	</p>
+{% endif %}
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+{% for random_number001 in list_random_num %}
+	<p>
+		{{ random_number001 }}
+	</p>
+{% endfor %}
+
+
+
+
+</body>
+</html>
