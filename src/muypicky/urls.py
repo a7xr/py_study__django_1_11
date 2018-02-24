@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from restaurants.views import home
-from restaurants.views import home_with_var_passed
+
+from restaurants.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home),
+    url(r'^hello_world/', hello_world),
     url(r'^home_with_var_passed/', home_with_var_passed),
+
+    url(r'^home/', home1),
+    url(r'^about/', about),
+    url(r'^contact/', contact),
+    # url(r'^home_with_var_passed/', home_with_var_passed),
+
 ]
