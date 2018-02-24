@@ -47,3 +47,6 @@ def home_with_var_passed(request):
 			, 'list_random_num': list_random_num
 		}
 	)
+
+
+class ContactView
