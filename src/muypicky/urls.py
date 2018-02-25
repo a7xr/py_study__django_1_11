@@ -37,5 +37,6 @@ urlpatterns = [
         #     , 'num': 88
         #     , 'some_list': [5, 6, 7, 8]
         # }
-    ))
-]
+    )),
+    url(r'^restaurants_list/', restaurants_list),
+]   

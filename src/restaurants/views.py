@@ -71,3 +71,14 @@ class ContactTemplateView(TemplateView):
 			]
 		}
 		return context
+
+def restaurants_list(request):
+	context = {
+		'some_list': [1, 2, 3, 4, 5]
+	}
+	return render(
+		request
+		, 'restaurants/restaurant_list.html'
+		, context
+	)
+	pass
