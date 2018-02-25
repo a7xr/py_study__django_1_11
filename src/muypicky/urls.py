@@ -17,7 +17,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
-from restaurants.views import *
+# from restaurants.views import *
+from rrestaurants.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
