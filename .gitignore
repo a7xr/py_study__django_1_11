@@ -1,0 +1,14 @@
+__pycache__/
+*$py.class
+
+*.pyc
+
+
+*.eot
+*.svg
+*.ttf
+*.woff
+*.woff2
+*.map
+*.zip
+/migrations/
