@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import random
 from django.views import View
+from django.views.generic import TemplateView
 
 # Create your views here.
 def hello_world(request):	# remember, this view is going to get the request and it is going to return some html
@@ -54,3 +55,19 @@ class ContactView(View):
 		context = {}
 		return render(request, "contact.html", context)
 		pass
+
+class ContactTemplateView(TemplateView):
+	template_name = 'contact.html'
+
+	def get_context_data(self, *args, **kwargs):
+		super(ContactTemplateView, self).get_context_data(*args, *kwargs)
+		context = {
+			'html_var': 'html_var001'
+			, 'num': 5
+			, 'some_list': [
+				random.randint(0, 23456787654)
+				, random.randint(0, 23456787654)
+				, random.randint(0, 23456787654)
+			]
+		}
+		return context

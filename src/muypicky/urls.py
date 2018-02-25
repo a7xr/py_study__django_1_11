@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from restaurants.views import *
 
@@ -25,7 +26,16 @@ urlpatterns = [
 
     url(r'^home/', home1),
     url(r'^about/', about),
-    url(r'^contact/', ContactView.as_view()),
-    # url(r'^home_with_var_passed/', home_with_var_passed),
 
+    url(r'^contact_class_view/', ContactView.as_view()),
+    url(r'^contact_class_templateview/', ContactTemplateView.as_view()),
+    url(r'contact_template_view_immediately', TemplateView.as_view(
+        template_name = 'contact.html'
+        # # do not know why the line below does NOT work
+        # , context = {
+        #     'html_var': 'html_var002'
+        #     , 'num': 88
+        #     , 'some_list': [5, 6, 7, 8]
+        # }
+    ))
 ]
