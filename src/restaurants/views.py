@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
-
+from django.views import View
 
 # Create your views here.
 def hello_world(request):	# remember, this view is going to get the request and it is going to return some html
@@ -49,4 +49,8 @@ def home_with_var_passed(request):
 	)
 
 
-class ContactView
+class ContactView(View):
+	def get(self,request, *args, **kwargs):
+		context = {}
+		return render(request, "contact.html", context)
+		pass
