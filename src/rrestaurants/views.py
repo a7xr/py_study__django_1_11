@@ -9,6 +9,29 @@ from django.views.generic import (
 
 from .models import RRestaurants, RRestaurantsLocation
 
+
+def add_rrestaurant(request):
+    context = {}
+    if (len(request.POST) > 0):
+        print('len(request.POST): ', len(request.POST))
+        print('request.POST: ', request.POST)
+        template_name = 'rrestaurants/rrestaurantslocation_add.html'
+        return render(
+            request
+            , template_name
+            , context
+        )
+        pass
+    else:
+        template_name = 'rrestaurants/rrestaurantslocation_add.html'
+        return render(
+            request
+            , template_name
+            , context
+        )
+        pass
+    
+
 # Create your views here.
 # Create your views here.
 def hello_world(request):   # remember, this view is going to get the request and it is going to return some html
