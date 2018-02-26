@@ -87,7 +87,7 @@ def restaurants_list(request):
     #     print('q.category: ', q.category)
     #     print('q.timestamp: ', q.timestamp)
     #     print('q.updated: ', q.updated)
-    #     print('q.date_field001: ', q.date_field001)
+    #     print('q.date_field001: ', q.date_field001) 
     context = {
         'object_list': queryset
     }
