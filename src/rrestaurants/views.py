@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import (
+    HttpResponse
+    , HttpResponseRedirect
+)
 import random
 from django.views import View
 from django.views.generic import (
@@ -7,29 +10,60 @@ from django.views.generic import (
     , ListView
     )
 
+from .forms import RRestaurantForm
+
 from .models import RRestaurants, RRestaurantsLocation
 
+def add_restau_short_template(request):
+    form001 = RRestaurantForm(request.POST or None)
+
+    if form001.is_valid():
+        RRestaurantsLocation.objects.create(
+            name = form001.cleaned_data.get('name')
+            , location = form001.cleaned_data.get('location')
+            , category = form001.cleaned_data.get('category')
+        )
+        return HttpResponseRedirect('/restaurants_list/')
+    if form001.errors:
+        print(form001.errors)
+        pass
+
+    context = {
+        'form001' : form001
+    }
+    return render(
+        request
+        , 'rrestaurants/rrestaurantslocation_add_shortened.html'
+        , context
+    )
+
+    pass
 
 def add_rrestaurant(request):
     context = {}
-    if (len(request.POST) > 0):
-        print('len(request.POST): ', len(request.POST))
-        print('request.POST: ', request.POST)
-        template_name = 'rrestaurants/rrestaurantslocation_add.html'
-        return render(
-            request
-            , template_name
-            , context
+    if (request.POST):
+
+        # print('len(request.POST): ', len(request.POST))
+        # print('request.POST: ', request.POST)
+        # # notice, if you set void to all of the form.html... you are going to get something similar to this in request.POST
+        # # # {'name': '', 'location': '', ...}
+        
+        RRestaurantsLocation.objects.create(
+            name = request.POST.get('name')
+            , location = request.POST.get('location')   # it is not good to have this style, better let django clean the data first
+                                                        # # at that time, you should use forms.py
+            , category = request.POST.get('category')
         )
-        pass
+        return HttpResponseRedirect('/restaurants_list/')
     else:
         template_name = 'rrestaurants/rrestaurantslocation_add.html'
+        print('Request.POST of ""add_rrestaurant"" is void')
         return render(
             request
             , template_name
-            , context
         )
         pass
+   
     
 
 # Create your views here.
