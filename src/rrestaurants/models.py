@@ -6,6 +6,9 @@ class RRestaurants(models.Model):
         max_length = 120
     )
 
+    def __str__(self):
+        return self.name
+
 
 class RRestaurantsLocation(models.Model):
     name = models.CharField(
@@ -24,6 +27,9 @@ class RRestaurantsLocation(models.Model):
         auto_now = True
     )
     date_field001 = models.DateTimeField(
-        auto_now = False
+        auto_now = True
         , auto_now_add = False
     )
+
+    def __str__(self):
+        return self.name

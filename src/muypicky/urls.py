@@ -40,4 +40,6 @@ urlpatterns = [
         # }
     )),
     url(r'^restaurants_list/', restaurants_list),
-]   
+
+    url(r'^restaurants_list/(?P<slug>\w+)', SearchCatListView.as_view()),
+]

@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import random
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import (
+    TemplateView
+    , ListView
+    )
 
 from .models import RRestaurants, RRestaurantsLocation
 
@@ -78,15 +81,15 @@ class ContactTemplateView(TemplateView):
 def restaurants_list(request):
     queryset = RRestaurantsLocation.objects.all()
     print('queryset: ', queryset)
-    for q in queryset:
-        print('q.name: ', q.name)
-        print('q.location: ', q.location)
-        print('q.category: ', q.category)
-        print('q.timestamp: ', q.timestamp)
-        print('q.updated: ', q.updated)
-        print('q.date_field001: ', q.date_field001)
+    # for q in queryset:
+    #     print('q.name: ', q.name)
+    #     print('q.location: ', q.location)
+    #     print('q.category: ', q.category)
+    #     print('q.timestamp: ', q.timestamp)
+    #     print('q.updated: ', q.updated)
+    #     print('q.date_field001: ', q.date_field001)
     context = {
-        'list_rresto_locations': queryset
+        'object_list': queryset
     }
     return render(
         request
@@ -94,3 +97,16 @@ def restaurants_list(request):
         , context
     )
     pass
+
+class SearchCatListView(ListView):
+    template_name = 'rrestaurants/rrestaurant_list.html'
+
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        print('slug:', slug)
+        if slug:
+            print ('niditra ato')
+            queryset = RRestaurantsLocation.objects.filter( category = slug )
+        else:
+            queryset = RRestaurantsLocation.objects.none()
+        return queryset

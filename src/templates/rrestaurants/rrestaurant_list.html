@@ -3,13 +3,14 @@
 {% block content %}
 
 
-{% for elem001 in list_rresto_locations %}
+{% for elem001 in object_list %}
 	<li>Name: {{ elem001.name }}</li>
 	<li>Location: {{ elem001.location }}</li>
 	<li>Category: {{ elem001.category }}</li>
 	<li>Timestamp: {{ elem001.timestamp }}</li>
 	<li>Updated: {{ elem001.updated }}</li> 
 	<li>Date_field001: {{ elem001.date_field001 }}</li>
+	<br/>
 
 {% endfor elem001 in some_list %}
 
