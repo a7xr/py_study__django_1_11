@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 
-{% load static %}
+{% load static from staticfiles %}
 <html>
 <head>
 	<title>{% block head_title %}MuyPicky.com{% endblock head_title  %}
 	</title>
 
+	<link href="{% static '/bootstrap_3_3_7/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
