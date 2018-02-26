@@ -24,12 +24,14 @@ def add_restau_short_template(request):
             , category = form001.cleaned_data.get('category')
         )
         return HttpResponseRedirect('/restaurants_list/')
-    if form001.errors:
-        print(form001.errors)
+    errors = None
+    if form001.errors: # this is going to be raised when you decided to raise it
+        errors = form001.errors
         pass
 
     context = {
         'form001' : form001
+        , 'errors': errors
     }
     return render(
         request
