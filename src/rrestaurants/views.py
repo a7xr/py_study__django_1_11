@@ -6,32 +6,79 @@ from django.http import (
 import random
 from django.views import View
 from django.views.generic import (
-    TemplateView
-    , ListView
-    )
+    TemplateView    # this is useful, when 
+    , ListView      # this is useful, when we want to filter something in our database
+)
 
-from .forms import RRestaurantForm
+from .forms import RRestaurantForm, RRestaurantModelForm
 
 from .models import RRestaurants, RRestaurantsLocation
 
-def add_restau_short_template(request):
-    form001 = RRestaurantForm(request.POST or None)
+def add_restau_uses_modelform(request):
+    form001 = RRestaurantModelForm(
+        request.POST or 
+        None
+    )   # that class(RRestaurantForm) is going to set the thing which we want to see in 
+        # # in the form.html
 
-    if form001.is_valid():
-        RRestaurantsLocation.objects.create(
-            name = form001.cleaned_data.get('name')
-            , location = form001.cleaned_data.get('location')
-            , category = form001.cleaned_data.get('category')
-        )
-        return HttpResponseRedirect('/restaurants_list/')
+    if form001.is_valid(): # first of all, this is going to happen if request.POST is OK
+        # RRestaurantsLocation.objects.create(        # you should know this already
+        #     name = form001.cleaned_data.get('name') # # this is going to insert into db
+        #     , location = form001.cleaned_data.get('location')
+        #     , category = form001.cleaned_data.get('category')
+        # )
+
+        form001.save()  # this line is VERY VERY IMPORTANT
+                        # # it is going to take all of the vars which came from the request... 
+                        # # and going to save into the database IMMEDIATELY
+
+        return HttpResponseRedirect('/restaurants_list/')   # you should know this, 
+                                        # # going to redirect to that url001, that url001 is going to redirect some method or class in views.py
+
     errors = None
-    if form001.errors: # this is going to be raised when you decided to raise it
+    if form001.errors:  # this is going to be raised when you decided to raise it
+                        # # this is going to be raised by def__clean_location@class__RRestaurantForm@src/rrestaurants/views.py
         errors = form001.errors
         pass
 
-    context = {
+    context = { # remember, we are going to come here when there is NO request.POST
         'form001' : form001
-        , 'errors': errors
+        , 'errors': errors  # remember, this is going to get value when there is error(which we defined just above) ONLY
+                            # # it is better that you do NOT print this {{ errors }} into template_html
+    }
+    return render(
+        request
+        , 'rrestaurants/rrestaurantslocation_add_shortened.html'
+        , context
+    )
+
+
+def add_restau_short_template(request):
+    form001 = RRestaurantForm(
+        request.POST or 
+        None
+    )   # that class(RRestaurantForm) is going to set the thing which we want to see in 
+        # # in the form.html
+
+    if form001.is_valid(): # first of all, this is going to happen if request.POST is OK
+        RRestaurantsLocation.objects.create(        # you should know this already
+            name = form001.cleaned_data.get('name') # # this is going to insert into db
+            , location = form001.cleaned_data.get('location')
+            , category = form001.cleaned_data.get('category')
+        )
+        return HttpResponseRedirect('/restaurants_list/')   # you should know this, 
+                                        # # going to redirect to that url001, that url001 is going to redirect some method or class in views.py
+
+    errors = None
+    if form001.errors:  # this is going to be raised when you decided to raise it
+                        # # this is going to be raised by def__clean_location@class__RRestaurantForm@src/rrestaurants/views.py
+        errors = form001.errors
+        pass
+
+    context = { # remember, we are going to come here when there is NO request.POST
+        'form001' : form001
+        , 'errors': errors  # remember, this is going to get value when there is error(which we defined just above) ONLY
+                            # # it is better that you do NOT print this {{ errors }} into template_html
     }
     return render(
         request
@@ -125,7 +172,15 @@ class ContactTemplateView(TemplateView):
     template_name = 'contact.html'
 
     def get_context_data(self, *args, **kwargs):
-        super(ContactTemplateView, self).get_context_data(*args, *kwargs)
+        super(
+            ContactTemplateView
+            , self
+        ).get_context_data(
+            *args
+            , **kwargs
+        )   # afaik, this is mandatory in TemplateView001
+
+
         context = {
             'html_var': 'html_var001'
             , 'num': 5

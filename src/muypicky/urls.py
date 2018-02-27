@@ -42,5 +42,6 @@ urlpatterns = [
     url(r'^restaurants_list/', restaurants_list),
     url(r'^restaurants/add/', add_rrestaurant),
     url(r'^restaurants_list/(?P<slug>\w+)', SearchCatListView.as_view()),
-    url(r'^add_restau_short_template/', add_restau_short_template),
+    url(r'^add_restau_short_template/', add_restau_short_template), 
+    url(r'^add_restau_uses_modelform/', add_restau_uses_modelform),
 ]
