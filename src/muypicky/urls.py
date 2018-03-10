@@ -49,4 +49,7 @@ urlpatterns = [
 
     url(r'^kotrana001/aff_base', kotrana001_aff_base),
     url(r'^kotrana001/kotrana001_form001', kotrana001_form001),
+    url(r'^kotrana001/all_model001', kotrana001_all_model001),
+    url(r'^kotrana001/kotrana001_modelform001', kotrana001_modelform001),
+
 ]
