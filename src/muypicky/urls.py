@@ -20,6 +20,8 @@ from django.views.generic import TemplateView
 # from restaurants.views import *
 from rrestaurants.views import *
 
+from kotrana001.views import *
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello_world/', hello_world),
@@ -44,4 +46,7 @@ urlpatterns = [
     url(r'^restaurants_list/(?P<slug>\w+)', SearchCatListView.as_view()),
     url(r'^add_restau_short_template/', add_restau_short_template), 
     url(r'^add_restau_uses_modelform/', add_restau_uses_modelform),
+
+    url(r'^kotrana001/aff_base', kotrana001_aff_base),
+    url(r'^kotrana001/kotrana001_form001', kotrana001_form001),
 ]

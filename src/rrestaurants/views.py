@@ -22,14 +22,9 @@ def add_restau_uses_modelform(request):
         # # in the form.html
 
     if form001.is_valid(): # first of all, this is going to happen if request.POST is OK
-        # RRestaurantsLocation.objects.create(        # you should know this already
-        #     name = form001.cleaned_data.get('name') # # this is going to insert into db
-        #     , location = form001.cleaned_data.get('location')
-        #     , category = form001.cleaned_data.get('category')
-        # )
 
         form001.save()  # this line is VERY VERY IMPORTANT
-                        # # it is going to take all of the vars which came from the request... 
+                        # # it is going to take all of the vars which came from the request(template_html)
                         # # and going to save into the database IMMEDIATELY
 
         return HttpResponseRedirect('/restaurants_list/')   # you should know this, 

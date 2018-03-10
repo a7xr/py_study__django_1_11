@@ -1,7 +1,9 @@
 from django.db import models
 
 # Create your models here.
-class RRestaurants(models.Model):
+class RRestaurants(models.Model): 
+    # afaik, this is going to be used by the admin_link ONLY
+    # # if you want this to be visible in the template_html, then you should use ModelForm
     name = models.CharField(
         max_length = 120
     )

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     , 'django.contrib.staticfiles'
 
     , 'rrestaurants'
+    , 'kotrana001'
 ]
 
 MIDDLEWARE = [
