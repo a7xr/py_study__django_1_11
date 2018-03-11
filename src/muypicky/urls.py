@@ -48,8 +48,13 @@ urlpatterns = [
     url(r'^add_restau_uses_modelform/', add_restau_uses_modelform),
 
     url(r'^kotrana001/aff_base', kotrana001_aff_base),
-    url(r'^kotrana001/kotrana001_form001', kotrana001_form001),
+    url(r'^kotrana001/kotrana001_add_form001', kotrana001_add_form001),
     url(r'^kotrana001/all_model001', kotrana001_all_model001),
-    url(r'^kotrana001/kotrana001_modelform001', kotrana001_modelform001),
+    url(r'^kotrana001/kotrana001_modelform001_add', kotrana001_modelform001_add),
 
+    url(r'^kotrana001/all_model002', kotrana001_all_model002),
+    url(r'^kotrana001/add_model002', kotrana001_add_model002),    
+    url(r'^kotrana001/add_model002_from_form', add_model002_from_form),    
+    # url(r'^kotrana001/create_model002', kotrana001_create_model002),
+    # url(r'^kotrana001/kotrana001_modelform001', kotrana001_modelform001),    
 ]
