@@ -19,10 +19,10 @@ def add_model002_from_form(request):
 
     if form001.is_valid(): # first of all, this is going to happen if request.POST is OK
         Kotrana001_Model002.objects.create(        # you should know this already
-            name = form001.cleaned_data.get('name') # # this is going to insert into db
-            , location = form001.cleaned_data.get('location')
+            first_name = form001.cleaned_data.get('first_name') # # this is going to insert into db
+            , last_name = form001.cleaned_data.get('last_name')
         )
-        return HttpResponseRedirect('/restaurants_list/')   # you should know this, 
+        return HttpResponseRedirect('/kotrana001/all_model002/')   # you should know this, 
                                         # # going to redirect to that url001, that url001 is going to redirect some method or class in views.py
 
     errors = None
@@ -36,6 +36,8 @@ def add_model002_from_form(request):
         , 'errors': errors  # remember, this is going to get value when there is error(which we defined just above) ONLY
                             # # it is better that you do NOT print this {{ errors }} into template_html
     }
+
+    print("Tonga ato vvvvvv")
     return render(
         request
         , 'kotrana001/kotrana001_add_model002.html'
