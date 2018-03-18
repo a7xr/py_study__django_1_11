@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     , 'rrestaurants'
     , 'kotrana001'
+    , 'kotrana002' # ty nnw anle kotrana niaraka tam Ol
 ]
 
 MIDDLEWARE = [

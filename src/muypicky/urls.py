@@ -21,6 +21,7 @@ from django.views.generic import TemplateView
 from rrestaurants.views import *
 
 from kotrana001.views import *
+from kotrana002.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -57,4 +58,15 @@ urlpatterns = [
     url(r'^kotrana001/from_form_add_model002', add_model002_from_form),    
     # url(r'^kotrana001/create_model002', kotrana001_create_model002),
     # url(r'^kotrana001/kotrana001_modelform001', kotrana001_modelform001),    
+
+
+
+    url(r'^kotrana002/test001', kotrana002_test001),  
+    url(r'^kotrana002/acceuil', kotrana002_acceuil),  
+    url(r'^kotrana002/presentation', kotrana002_presentation),  
+    url(r'^kotrana002/actualite', kotrana002_actualite),  
+    url(r'^kotrana002/portfolio', kotrana002_portfolio),  
+    url(r'^kotrana002/contact', kotrana002_contact),
+    url(r'^kotrana002/single_folio', kotrana002_single_folio),
+
 ]
